@@ -110,28 +110,27 @@ func remoteDistributor(world [][]uint8, turns int, threads int) [][]uint8 {
 	clients = make([]*rpc.Client, threads)
 
 	errs := make([]error, threads)
-	/*
-		address := make([]string, 8)
-		address[0] = "54.242.253.12:8040"
-		address[1] = "34.229.159.250:8040"
-		address[2] = "52.23.230.155:8040"
-		address[3] = "54.162.208.37:8040"
-		address[4] = "34.224.78.220:8040"
-		address[5] = "54.226.16.66:8040"
-		address[6] = "34.227.195.170:8040"
-		address[7] = "50.19.31.194:8040"
-	*/
+	address := make([]string, 8)
+	address[0] = "54.159.106.78:8030"
+	address[1] = "54.224.104.161:8030"
+	address[2] = "18.212.33.191:8030"
+	address[3] = "54.197.17.251:8030"
+	address[4] = "44.203.40.123:8030"
+	address[5] = "44.211.173.108:8030"
+	address[6] = "3.86.112.230:8030"
+	address[7] = "54.209.94.111:8030"
+
 	for i := 0; i < threads; i++ {
 
-		port := 8040 + (i * 10)
-		address := "localhost:" + fmt.Sprint(port)
-		fmt.Println(address)
-		clients[i], errs[i] = rpc.Dial("tcp", address)
+		//port := 8040 + (i * 10)
+		//address := "localhost:" + fmt.Sprint(port)
+		fmt.Println(address[i])
+		clients[i], errs[i] = rpc.Dial("tcp", address[i])
 		if errs[i] != nil {
 			fmt.Println("-----------Unable to connect--------------------")
 		}
 	}
-
+	
 	clientsReady = true
 	//fmt.Println("NUMBER OF TURNS:", turns)
 
