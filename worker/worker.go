@@ -155,7 +155,7 @@ func parallelCalculateNextState(world [][]uint8, startY, endY, height, width int
 func processChunk(world [][]uint8, threads int, startY int, endY int, turns int) [][]uint8 {
 
 	if initialised == false {
-		lower, err = rpc.Dial("tcp", "localhost:8070")
+		lower, err = rpc.Dial("tcp", "localhost:8040")
 		if err != nil {
 			fmt.Println("Couldn't dial worker")
 
@@ -349,7 +349,7 @@ func (r *RemoteWorker) Test(request stubs.Request, response *stubs.Response) (er
 }
 
 func main() {
-	pAddr := flag.String("port", ":8040", "Port to listen on")
+	pAddr := flag.String("port", ":8030", "Port to listen on")
 	//pAddr2 := flag.String("top", ":8070", "Port to receive top halo")
 	flag.Parse()
 
@@ -357,7 +357,7 @@ func main() {
 	readyForContact = false
 
 	listener, _ := net.Listen("tcp", *pAddr)
-	listener2, _ := net.Listen("tcp", ":8060")
+	listener2, _ := net.Listen("tcp", ":8040")
 	/*
 		defer func(listener net.Listener) {
 			err := listener.Close()
