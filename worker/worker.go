@@ -332,7 +332,7 @@ func (r *RemoteWorker) CalculateNextState(request stubs.WorkerRequest, response 
 	reset = false
 
 	//response.World = parallelCalculateNextState(request.WorldCopy, request.StartY, request.EndY, request.Height, request.Width)
-	response.World = processChunk(request.WorldCopy, 8, request.StartY, request.EndY, request.Turns)
+	response.World = processChunk(request.WorldCopy, 16, request.StartY, request.EndY, request.Turns)
 	fmt.Println("Response made")
 	return
 }
